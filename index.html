@@ -28,6 +28,25 @@ https://templatemo.com/tm-518-sentra
 
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     </head>
+	<div id="loginOverlay">
+  		<div class="login-container">
+    
+    	<div class="login-header">
+      	<span onclick="showLogin()">LOGIN</span>
+     	<span onclick="showRegister()">REGISTER</span>
+    </div>
+
+    <div class="form-box">
+      <h2>Login</h2>
+      <input type="text" placeholder="E-mail">
+      <input type="password" placeholder="Sandi">
+      <button>MASUK</button>
+      <p>Lupa Sandi?</p>
+    </div>
+
+    <button class="close-btn" onclick="closeLogin()">✖</button>
+  </div>
+</div>
 
 <body>
 
@@ -589,8 +608,7 @@ https://templatemo.com/tm-518-sentra
                         <h1>Contact<br><em>Sentra</em></h1>
                         <p>Curabitur hendrerit mauris mollis ipsum vulputate rutrum. 
                         <br>Phasellus luctus odio eget dui imperdiet.</p>
-                        
-                    </div>
+                        </div>
                     <div class="section-content">
                         <form id="contact" action="#" method="post">
                             <div class="row">
@@ -624,6 +642,7 @@ https://templatemo.com/tm-518-sentra
                     </div>
                 </div>
             </section>
+			
             <section class="footer">
                 <p>Copyright &copy; 2019 Company Name 
                 
