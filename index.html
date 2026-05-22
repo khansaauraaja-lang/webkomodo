@@ -691,10 +691,23 @@ https://templatemo.com/tm-518-sentra
     <script>
         // Masuk ke mode aman jQuery untuk mencegah bentrok fungsi
         $(document).ready(function() {
-            // SKRIP FIX: Memaksa tombol dengan class external-link agar berfungsi normal menuju halaman login
-            $('.sidebar-navigation a.external-link, .responsive-nav a.external-link').on('click', function(e) {
-                e.stopPropagation(); // Hentikan script smooth-scroll bawaan template
-                window.location.href = $(this).attr('href');
+            // 1. FIX TOMBOL LOGIN: Langsung pindah halaman tanpa hambatan
+            $('.sidebar-navigation a, .responsive-nav a').on('click', function(e) {
+                if ($(this).hasClass('external-link')) {
+                    e.stopPropagation();
+                    window.location.href = $(this).attr('href');
+                    return; // Berhenti di sini khusus untuk tombol login
+                }
+                
+                // 2. FIX ANIMASI GARIS PUTIH & GESER (Untuk Menu Lain & Contact Us)
+                // Memaksa template memindahkan tanda aktif secara instan saat diklik
+                var parentLi = $(this).parent('li');
+                parentLi.addClass('active').siblings().removeClass('active');
+                
+                // Memastikan menu mobile langsung menutup setelah diklik
+                if ($('#main-nav').hasClass('in')) {
+                    $('#nav-toggle').click();
+                }
             });
         });
 
