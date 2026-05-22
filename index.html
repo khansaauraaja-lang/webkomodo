@@ -630,7 +630,7 @@ https://templatemo.com/tm-518-sentra
             </section>
         </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
     <script src="js/vendor/bootstrap.min.js"></script>
@@ -679,7 +679,64 @@ https://templatemo.com/tm-518-sentra
         }
     </script>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+    <script src="js/vendor/bootstrap.min.js"></script>
+    
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+        // Masuk ke mode aman jQuery untuk mencegah bentrok fungsi
+        $(document).ready(function() {
+            // SKRIP FIX: Memaksa tombol dengan class external-link agar berfungsi normal menuju halaman login
+            $('.sidebar-navigation a.external-link, .responsive-nav a.external-link').on('click', function(e) {
+                e.stopPropagation(); // Hentikan script smooth-scroll bawaan template
+                window.location.href = $(this).attr('href');
+            });
+        });
+
+        // Hide Header on on scroll down
+        var didScroll;
+        var lastScrollTop = 0;
+        var delta = 5;
+        var navbarHeight = $('header').outerHeight();
+
+        $(window).scroll(function(event){
+            didScroll = true;
+        });
+
+        setInterval(function() {
+            if (didScroll) {
+                hasScrolled();
+                didScroll = false;
+            }
+        }, 250);
+
+        function hasScrolled() {
+            var st = $(this).scrollTop();
+            
+            // Make sure they scroll more than delta
+            if(Math.abs(lastScrollTop - st) <= delta)
+                return;
+            
+            // If they scrolled down and are past the navbar, add class .nav-up.
+            if (st > lastScrollTop && st > navbarHeight){
+                // Scroll Down
+                $('header').removeClass('nav-down').addClass('nav-up');
+            } else {
+                // Scroll Up
+                if(st + $(window).height() < $(document).height()) {
+                    $('header').removeClass('nav-up').addClass('nav-down');
+                }
+            }
+            
+            lastScrollTop = st;
+        }
+    </script>
+    <!-- jQuery versi 1.10.2 yang bentrok di bawah ini sudah dihapus dengan aman -->
 
 </body>
 </html>
