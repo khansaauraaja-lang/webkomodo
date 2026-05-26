@@ -1,3 +1,4 @@
+alert("register.js terbaca");
 document.getElementById("registerForm").addEventListener("submit", async function(e) {
     e.preventDefault();
     alert("Tombol register berhasil diklik!");
