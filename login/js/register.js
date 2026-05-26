@@ -1,5 +1,6 @@
 document.getElementById("registerForm").addEventListener("submit", async function(e) {
     e.preventDefault();
+    alret("Tombol register berhasil diklik!"):
 
     const username = document.getElementById("username").value.trim();
     const email = document.getElementById("email").value.trim();
